@@ -1,0 +1,18 @@
+.container {
+  width: 48rem;
+  height: 48rem;
+  background: cyan;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.triangle {
+  clip-path: polygon(50% 6%, 0% 94%, 100% 94%);
+}
+
+.circle {
+  border-radius: 100%;
+}
