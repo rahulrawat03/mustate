@@ -1,0 +1,23 @@
+{
+  "name": "@rahulrawat03/mustate",
+  "version": "1.0.0",
+  "main": "lib/index.ts",
+  "author": "Rahul Rawat",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rahulrawat03/mustate"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite-plugin-dts": "^3.8.1"
+  }
+}
