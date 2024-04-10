@@ -5,6 +5,10 @@
     "example",
     "scripts"
   ],
+  "scripts": {
+    "update-version": "node scripts/updateVersion.mjs",
+    "update-packages": "node scripts/updatePackages.mjs"
+  },
   "devDependencies": {
     "@types/node": "^20.12.6",
     "@types/react": "^18.2.66",

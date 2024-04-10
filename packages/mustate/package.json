@@ -1,6 +1,6 @@
 {
   "name": "@rahulrawat03/mustate",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "lib/index.ts",
   "author": "Rahul Rawat",
   "license": "MIT",
