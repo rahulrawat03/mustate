@@ -7,3 +7,7 @@
 
 - Implement state management solution.
 - Add demo example.
+
+# 1.0.3
+
+- Add support for ES6 classes.
