@@ -65,31 +65,22 @@ export class MuStore<T extends object = object> {
 
   private createStore(object: T): T {
     const handler: ProxyHandler<object> = {
-      set: (
-        target: { [key: string]: unknown },
-        property: string,
-        value: unknown,
-      ) => {
-        if (target[property] != value) {
-          target[property] = value;
+      set: (target: object, property: string, value: unknown) => {
+        if (Reflect.get(target, property) != value) {
+          Reflect.set(target, property, value);
           this.notify(property);
         }
 
         return true;
       },
 
-      get: (target: { [key: string]: unknown }, property: string) => {
-        return target[property];
-      },
+      get: (target: object, property: string) => Reflect.get(target, property),
     };
 
-    const store = new Proxy(
-      {
-        [MuStateIdentifier]: true,
-        ...object,
-      },
-      handler,
-    ) as T;
+    Object.defineProperty(object, MuStateIdentifier, {
+      value: true,
+    });
+    const store = new Proxy(object, handler) as T;
 
     MuStore.stores.set(store, this);
 
