@@ -37,7 +37,7 @@ export class Registerer {
       return;
     }
 
-    const properties = new Set(Object.keys(observable.store));
+    const properties = this.getProperties(observable.store);
     properties.delete(MuStateIdentifier);
     const include = new Set(observable.include ?? []);
     const exclude = new Set(observable.exclude ?? []);
@@ -55,10 +55,6 @@ export class Registerer {
         operation(store, property);
       }
     }
-  }
-
-  private static isStore(object: object) {
-    return MuStateIdentifier in object;
   }
 
   private static validateProperties(
@@ -87,5 +83,23 @@ export class Registerer {
         )}] are not available in the store.`,
       );
     }
+  }
+
+  private static isStore(object: object) {
+    return MuStateIdentifier in object;
+  }
+
+  private static getProperties(object: object) {
+    const properties = new Set<string>();
+
+    while (object != null) {
+      for (const property of Object.getOwnPropertyNames(object)) {
+        properties.add(property);
+      }
+
+      object = Object.getPrototypeOf(object);
+    }
+
+    return properties;
   }
 }
