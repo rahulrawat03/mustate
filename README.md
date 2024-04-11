@@ -1,4 +1,4 @@
-# MuState (Simple State Management Library)
+# Mustate (Simple State Management Library)
 
 It is a minimalist state management library that exposes only two entities.
 
@@ -26,7 +26,7 @@ const counterStore = createStore({
   }
 ```
 
-- If none of the `include` and `exclude` is provided, all of the store proeprties are observed.
+- If none of the `include` and `exclude` is provided, all of the store properties are observed.
 
 ```js
 // Container of counter
@@ -83,4 +83,5 @@ function Counter() {
 ```
 
 Change in `count` only triggers the rebuild of `Counter` while the `Container` component remains unaffected till `shape` changes since it only observes `shape` property of the store.  
+<br />
 This behaviour makes it different from `React Context` where all the consumers update when the context updates regardless of whether they are listening to the changes or not.
